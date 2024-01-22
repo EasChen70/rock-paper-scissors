@@ -49,22 +49,24 @@ function playGame(){
         let result = playRound(getPlayerChoice(), getComputerChoice());
         switch(result){
             case 0:
-                console.log("It's a Tie!");
+                console.log("Round " + (i + 1) + " It's a Tie!");
                 break;
             case 1:
-                console.log("You Win! " + getPlayerChoice() + " beats " + getComputerChoice() + "!");
-                userScore + 1;
+                console.log("Round " + (i + 1) + " You Win!");
+                userScore++;
                 break;
             case 2:
-                console.log("You Lose! " + getComputerChoice() + " beats " + getPlayerChoice() + "!");
-                computerScore +1;
+                console.log("Round " + (i + 1) + " You Lose!");
+                computerScore++;
                 break;
         }
     }
     if(userScore > computerScore){
         console.log("You Won!")
-    } else{
+    } else if (userScore < computerScore){
         console.log("You Lost!")
+    } else{
+        console.log("It's A Tie!")
     }
 }
 

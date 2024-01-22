@@ -51,17 +51,20 @@ function playGame(){
     let userScore = 0;
     let computerScore = 0;
     for(i = 0; i < 5; i++){
-        let result = playRound(getPlayerChoice(), getComputerChoice());
-        switch(result){
+        let playerChoice = getPlayerChoice();
+        let computerChoice = getComputerChoice();
+        let result = playRound(playerChoice, computerChoice);
+
+        switch (result) {
             case 0:
-                console.log("Round " + (i + 1) + " It's a Tie!");
+                console.log(`Round ${i + 1}: It's a Tie!`);
                 break;
             case 1:
-                console.log("Round " + (i + 1) + " You Win!");
+                console.log(`Round ${i + 1}: You Win! ${playerChoice} beats ${computerChoice}`);
                 userScore++;
                 break;
             case 2:
-                console.log("Round " + (i + 1) + " You Lose!");
+                console.log(`Round ${i + 1}: You Lose! ${computerChoice} beats ${playerChoice}`);
                 computerScore++;
                 break;
         }

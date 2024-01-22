@@ -12,12 +12,17 @@ function getComputerChoice(){
 
 
 function getPlayerChoice(){
-    let choice = prompt("Rock, Paper, or Scissors?");
-    choice = choice.toLowerCase();
-    if(choice === "rock" || choice === "paper" || choice === "scissors"){
-        return choice;
-    } else{
-        return null;
+    let validated = false;
+    while(validated != true){
+        let choice = prompt("Rock, Paper, or Scissors?");
+        choice = choice.toLowerCase();
+        if(choice == null){
+            continue;
+        }
+        if(choice === "rock" || choice === "paper" || choice === "scissors"){
+            validated = true;
+            return choice;
+        } 
     }
 }
 

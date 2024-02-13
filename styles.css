@@ -13,6 +13,23 @@ header{
     margin-bottom: 10px;
 }
 
+.Earth,
+.Water,
+.Fire{
+    flex-basis: 0;
+    box-sizing: border-box;
+    text-align: center;
+    margin:auto;
+    border-style: none;
+    background-color: transparent;
+}
+
+img {
+    width: 55px;
+    height: auto;
+}
+
+
 .Outcomes{
     display: flex;
     justify-content: space-between;

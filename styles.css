@@ -1,7 +1,27 @@
+@font-face {
+    font-family: 'Uncial Antiqua';
+    src: url('assets/UncialAntiqua-Regular.ttf') format('truetype');
+}
+
+*{
+    font-family: 'Uncial Antiqua', serif;
+}
+
 header{
     text-align: center;
 }
 
+.EarthTitle{
+    color: green;
+}
+
+.WaterTitle{
+    color: rgb(48, 48, 190);
+}
+
+.FireTitle{
+    color: rgb(237, 100, 49);
+}
 
 .Elements{
     display: flex;
@@ -11,6 +31,7 @@ header{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+    border-radius: 10%;
 }
 
 .Earth,
@@ -38,6 +59,7 @@ img {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 10%;
 }
 
 .PlayerChoice,

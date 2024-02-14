@@ -2,44 +2,42 @@ function getComputerChoice(){
     let choice = Math.floor(Math.random() * 3);
     switch(choice){
         case 0:
-            return "rock";
+            return "earth";
         case 1:
-            return "paper";
+            return "water";
         case 2:
-            return "scissors";
+            return "fire";
     }
 }
 
+//Get buttons + id name then passes to getPlayerChoice function
+const buttons = document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', function() {
+        const choice = this.getAttribute('id');
+        getPlayerChoice(choice);
+    });
+});
 
-function getPlayerChoice(){
-    let validated = false;
-    while(validated != true){
-        let choice = prompt("Rock, Paper, or Scissors?");
-        choice = choice.toLowerCase();
-        if(choice == null){
-            continue;
-        }
-        if(choice === "rock" || choice === "paper" || choice === "scissors"){
-            validated = true;
-            return choice;
-        } 
-    }
+
+function getPlayerChoice(input){
+    let choice = input.toLowerCase();
+    if(choice === "earth" || choice === "water" || choice === "fire"){
+        console.log(choice);
+        return choice;
+    }else{
+        console.log("Something went wrong!");
+    }  
 }
 
 
 function playRound(playerChoice, computerChoice){
-    if(playerChoice === null){
-        alert("Invalid input, Try again!");
-        return null;
-    }
     if(playerChoice === computerChoice){
         return 0;
     }
-
     if( 
-        (playerChoice == "rock" && computerChoice == "scissors")||
-        (playerChoice == "paper" && computerChoice == "rock")||
-        (playerChoice == "scissors" && computerChoice == "paper")
+        (playerChoice == "earth" && computerChoice == "water")||
+        (playerChoice == "water" && computerChoice == "fire")||
+        (playerChoice == "fire" && computerChoice == "earth")
         ) {
         return 1;
     } else{

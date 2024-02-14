@@ -5,6 +5,7 @@
 
 *{
     font-family: 'Uncial Antiqua', serif;
+    background-color: rgb(241, 240, 240);
 }
 
 header{
@@ -34,9 +35,9 @@ header{
     border-radius: 10%;
 }
 
-.Earth,
-.Water,
-.Fire{
+#Earth,
+#Water,
+#Fire{
     flex-basis: 0;
     box-sizing: border-box;
     text-align: center;
@@ -44,6 +45,13 @@ header{
     border-style: none;
     background-color: transparent;
 }
+
+#Earth:hover,
+#Water:hover,
+#Fire:hover{
+    scale: 105%;
+}
+
 
 img {
     width: 55px;
@@ -59,7 +67,7 @@ img {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10%;
+    border-radius: 2%;
 }
 
 .PlayerChoice,

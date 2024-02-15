@@ -11,19 +11,6 @@ function getComputerChoice(){
 }
 
 
-
-
-// function getPlayerChoice(input){
-//     let choice = input.toLowerCase();
-//     if(choice === "earth" || choice === "water" || choice === "fire"){
-//         console.log(choice);
-//         return choice;
-//     }else{
-//         console.log("Something went wrong!");
-//     }  
-// }
-
-
 function playRound(playerChoice, computerChoice){
     if(playerChoice === computerChoice){
         return 0;
@@ -41,8 +28,29 @@ function playRound(playerChoice, computerChoice){
 
 
 let userScore = 5;
-let computerScore = 5;    
-let i = 0;
+let updateScore = document.querySelector(".YourLives");
+let computerScore = 5;
+let updateComp = document.querySelector(".EnemyLives");
+
+let rounds = document.querySelector(".Round");
+
+let outcome = document.querySelector(".Outcome");
+
+let yourChoice = document.querySelector(".YourElementChoice");
+
+let compChoice = document.querySelector(".EnemyElementChoice");
+
+let border = document.querySelector(".Outcomes");
+let insideBorders1 = document.querySelector(".BattleStats");
+let insideBorders2 = document.querySelector(".ComputerChoice");
+
+let playAgain = document.getElementById('playAgain');
+playAgain.addEventListener('click', function() {
+    window.location.reload();
+});
+playAgain.style.visibility = 'hidden';
+
+let roundNum = 0;
 //Get buttons + id name then passes to getPlayerChoice function
 const buttons = document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', function() {
@@ -50,25 +58,42 @@ const buttons = document.querySelectorAll('button').forEach(button => {
             const playerChoice = this.getAttribute('id').toLowerCase();
             const computerChoice = getComputerChoice();
             let result = playRound(playerChoice, computerChoice);
-            i++;
+            roundNum++;
+            rounds.textContent = "Round: " + roundNum
+            yourChoice.textContent = playerChoice;
+            compChoice.textContent = computerChoice;
+
                 switch (result) {
                     case 0:
-                        console.log(`Round ${i + 1}: It's a Tie!`);
+                        outcome.textContent = "It's a Tie!"
+                        border.style.borderColor = "gray";
+                        insideBorders1.style.borderLeftColor = "gray";
+                        insideBorders2.style.borderLeftColor = "gray";
                         break;
                     case 1:
-                        console.log(`Round ${i + 1}: You Win! ${playerChoice} beats ${computerChoice}`);
+                        outcome.textContent = `You Win! ${playerChoice} beats ${computerChoice}`;
                         computerScore--;
+                        updateComp.textContent = "Enemy's Lives: " + computerScore;
+                        border.style.borderColor = "green";
+                        insideBorders1.style.borderLeftColor = "green";
+                        insideBorders2.style.borderLeftColor = "green";
                         break;
                     case 2:
-                        console.log(`Round ${i + 1}: You Lose! ${computerChoice} beats ${playerChoice}`);
+                        outcome.textContent = `You Lose! ${computerChoice} beats ${playerChoice}`;
                         userScore--;
+                        updateScore.textContent = "Your Lives: " + userScore;
+                        border.style.borderColor = "red";
+                        insideBorders1.style.borderLeftColor = "red";
+                        insideBorders2.style.borderLeftColor = "red";
                         break;
                 }
             
             if(computerScore == 0){
-                console.log("You Won!")
+                outcome.textContent = "You are the Victor Young Sorcerer!"
+                playAgain.style.visibility = 'visible';
             } else if (userScore == 0){
-                console.log("You Lost!")
+                outcome.textContent = "The Dark Sorcerer has emerged the Victor..."
+                playAgain.style.visibility = 'visible';
             }
         }
     });
